@@ -1,0 +1,3 @@
+from .GPBO import bayesian_optimization_with_trust_region
+from .GPBO2 import bayesian_optimization_with_trust_region_fast
+from .vanGPBO import bayesian_optimization
