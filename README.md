@@ -98,7 +98,7 @@ def rbf_kernel(X1, X2, length_scale):
 * **Parameters**
 
   * `length_scale`: Controls smoothness. Smaller values allow faster variation.
-* **Note:** No signal variance (`sigma_f`) term—kernel is unit-variance by design.
+
 
 ### **Standard Normal Utilities**
 
@@ -114,7 +114,7 @@ These are used in the Expected Improvement calculation.
 
 ### **Gaussian Process Posterior**
 
-Noise is applied **only to the training covariance `K`** (not `K_ss`). Jitter is added for stability and the posterior covariance is symmetrized/clipped on the diagonal.
+Noise is applied **only to the training covariance `K`** . Jitter is added for stability and the posterior covariance is symmetrized and clipped on the diagonal.
 
 ```python
 def gp_posterior(X_train, y_train, X_test, alpha, length_scale):
@@ -131,7 +131,6 @@ def gp_posterior(X_train, y_train, X_test, alpha, length_scale):
     v     = np.linalg.solve(L, K_s)
     cov_s = K_ss - v.T.dot(v)
 
-    # numerical hygiene
     cov_s = 0.5 * (cov_s + cov_s.T)
     diag = np.clip(np.diag(cov_s), 0.0, None)
     np.fill_diagonal(cov_s, diag)
@@ -139,10 +138,7 @@ def gp_posterior(X_train, y_train, X_test, alpha, length_scale):
     return mu_s.flatten(), cov_s
 ```
 
-* **Parameters**
 
-  * `alpha`: Observation noise std (enters as `alpha**2` on `K`).
-  * `length_scale`: RBF length scale.
 
 ### **Acquisition: Expected Improvement (EI, minimization form)**
 
