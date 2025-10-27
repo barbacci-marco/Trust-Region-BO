@@ -32,7 +32,6 @@ The repository has the following structure
 ```
 BAYESIAN-OPTIMISATION-WITH-...                        
 ├── Main/
-│   ├── __pycache__/                    # Python bytecode (auto-generated)
 │   ├── GPBO.py                         # Gaussian-Process Bayesian Optimisation (core implementation)
 │   ├── GPBO2.py                        # Alternative/experimental GP-BO implementation or API variant
 │   ├── vanGPBO.py                      # “Vanilla” GP-BO baseline (minimal features for comparison)
