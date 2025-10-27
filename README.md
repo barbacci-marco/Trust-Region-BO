@@ -73,7 +73,7 @@ git clone https://github.com/barbacci_marco/Trust-Region-BO.git
 Install the required packages:
 
 ```bash
-pip install numpy 
+pip install numpy, matplotlib, pandas
 ```
 
 ### Quick start
